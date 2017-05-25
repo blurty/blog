@@ -1,4 +1,4 @@
-# Flask
+# Flask框架Server和RequestHandler的爱恨纠缠
 
 ## overview
 
@@ -56,7 +56,8 @@ Flask以及它所使用的wsgi库werkzeug和模板引擎jinja2都是由[Armin Ro
        return BaseWSGIServer(host, port, app, request_handler,
                               passthrough_errors, ssl_context, fd=fd)         
        
-可以看到实际上是make了一个`BaseWSGIServer`,这个server开始监听连接。下边来研究一下这个`BaseWSGIServer`。</br>
+可以看到实际上是make了一个`BaseWSGIServer`,这个server开始监听连接。下边来研究一下这个`BaseWSGIServer`。
+
 `BaseWSGIServer`继承自python基本库`BaseHTTPServer.py`中的`HTTPServer`, `HTTPServer`继承自`SocketServer.py`中的`TCPServer`。
 	
 	<serving.py>
@@ -111,7 +112,8 @@ Flask以及它所使用的wsgi库werkzeug和模板引擎jinja2都是由[Armin Ro
       		self.RequestHandlerClass(request, client_address, self)
             	
             	
-从这些代码可以看出，HTTP建立于TCP之上。<strong>`BaseServer`最需要注意的是在构造的时候设置了请求处理类`RequestHandlerClass`</strong>。也就是在`BaseWSGIServer`构造的时候设置了请求处理类。根据上边的了解，我们知道在`app.run()`的时候就把请求处理类设置好了，注意这里只是设置了请求处理类，并没有真正的去构建一个处理实例。那么它是在什么时候实例化呢？实际上它是在http请求真正到来的时候才会被实例化。随后我们会继续通过代码看到这个请求处理类在实例化的时候就会自动去处理这个请求。</br>
+从这些代码可以看出，HTTP建立于TCP之上。<strong>`BaseServer`最需要注意的是在构造的时候设置了请求处理类`RequestHandlerClass`</strong>。也就是在`BaseWSGIServer`构造的时候设置了请求处理类。根据上边的了解，我们知道在`app.run()`的时候就把请求处理类设置好了，注意这里只是设置了请求处理类，并没有真正的去构建一个处理实例。那么它是在什么时候实例化呢？实际上它是在http请求真正到来的时候才会被实例化。随后我们会继续通过代码看到这个请求处理类在实例化的时候就会自动去处理这个请求。
+
 我们先来简单说一下一个请求的基本处理逻辑。
 
 - 首先一个连接进来，`BaseServer`监听到连接，调用`self._handle_request_noblock()`处理

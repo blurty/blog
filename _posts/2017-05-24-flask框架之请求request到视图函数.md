@@ -1,4 +1,4 @@
-# Flask
+# Flask框架之请求request到视图函数
 
 ## overview
 
@@ -25,8 +25,10 @@ Flask以及它所使用的wsgi库werkzeug和模板引擎jinja2都是由[Armin Ro
     	app.run()
     
 #### 分析`app(environ, start_response)`	
-<p>可以看到最核心的应用就是app这个东西。app是类Flask的一个实例。这个类会将很多东西集成进去，比如url_map, environ, config等等。这个随后再慢慢抽丝剥茧。现在先看一下`app(environ, start_response)`。 
-<p>既然app是Flask的一个实例，那么app(...)说明了这个实例是可以被调用的，在python中只要实现了类的__call__方法，那么这个对象就是可调用的。 
+
+可以看到最核心的应用就是app这个东西。app是类Flask的一个实例。这个类会将很多东西集成进去，比如url_map, environ, config等等。这个随后再慢慢抽丝剥茧。现在先看一下`app(environ, start_response)`。 
+
+既然app是Flask的一个实例，那么app(...)说明了这个实例是可以被调用的，在python中只要实现了类的__call__方法，那么这个对象就是可调用的。 
 
 	class Flask():
 		def __call__(self, environ, start_response):
@@ -79,9 +81,11 @@ Flask以及它所使用的wsgi库werkzeug和模板引擎jinja2都是由[Armin Ro
     	rule = req.url_rule    # 最后边可以看到url_rule是如何生成的
     	return self.view_functions[rule.endpoint](**req.view_args)
 
-<p>点击查看[url_rule的生成](#jump)</br>    	
+点击查看[url_rule的生成](#jump)
+
 `view_functions`存放的就是我们在程序中所有用`app.route`装饰过的视图函数。
-<p>至此我们已经从app(environ, start_response)找到最终的处理请求的地方。接下来我们来看一下`url_map`。
+
+至此我们已经从app(environ, start_response)找到最终的处理请求的地方。接下来我们来看一下`url_map`。
 
 #### url_map
 url_map在Flask中被初始化为一个Map。Map是werkzeug库中的一个对象。我们来看一下：
@@ -142,7 +146,8 @@ url_rule是类Rule的一个实例。当请求到来时，上下文环境会给re
 <strong>rule用来存放单条路由的规则，map用来存放所有的rule的集合。</strong>
 
 <span id="jump">
-<p>以下为在构造请求上下文的时候从request获取到url_rule的过程：
+
+以下为在构造请求上下文的时候从request获取到url_rule的过程：
 
     app.py
     def create_url_adapter(self, request):
@@ -161,5 +166,6 @@ url_rule是类Rule的一个实例。当请求到来时，上下文环境会给re
                 self.url_adapter.match(return_rule=True)
             self.request.url_rule = url_rule
 
-<p>接下来要分析的是Flask的请求上下文和应用上下文。
+接下来要分析的是Flask的请求上下文和应用上下文。
+
 </span>
