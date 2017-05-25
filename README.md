@@ -1,5 +1,5 @@
-#jekylll blog
+## 博客
 
-* 基于jekyll的blog
-* 使用了bootstrap框架
-* 使用font-awesome进行修饰
+- 基于jekyll的blog
+- 使用了bootstrap框架
+- 使用font-awesome进行修饰

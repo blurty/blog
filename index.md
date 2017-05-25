@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 寂寞先生
-tagline: 这，是一个寂寞的世界……
+title: 江南·听雨轩
+tagline: Coder? Coder!
 ---
 {% include JB/setup %}
 
