@@ -5,6 +5,8 @@
 ### 背景
 Flask以及它所使用的wsgi库werkzeug和模板引擎jinja2都是由[Armin Ronacher](http://lucumr.pocoo.org/about/)和他的团队开发的。实际上Armin Ronacher早就开发出来了werkzeug开源库，旨在为框架封装一个良好的底层的API接口，但过了一段时间，Armin发现还是自己来先做一个吧，然后Flask就诞生了。
 
+<!--break-->
+
 ### 任务
 *分析从发起HTTP请求到响应请求之间的流程*
 
