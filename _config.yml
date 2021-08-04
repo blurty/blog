@@ -13,10 +13,14 @@ title : 江南·听雨轩
 tagline: Site Tagline
 author :
   name : blurty
-  email : stevecloud@126.com
+  email : fuhongbofhb@163.com
   github : blurty
   twitter : None
   feedburner : None
+
+plugins: [jekyll-paginate]
+paginate: 10
+paginate_path: "essay/page:num"
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
