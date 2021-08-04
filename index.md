@@ -5,7 +5,7 @@ tagline: Coder? Coder!
 ---
 {% include JB/setup %}
 
-{% for post in paginator.posts %}
+{% for post in site.posts %}
 <div class = "card">
 		<div  class = "date_label">
 			<div class="day_month">
