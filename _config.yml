@@ -21,6 +21,12 @@ author :
 paginate: 5
 paginate_path: "page:num"
 
+gittalk:
+  owner: blurty
+  repo: blog-comments
+  clientID: cc954ce7ae8d08749a83
+  clientSecret: 7971b94322d0824fc9f0ae767af8ff594c1a6fbf
+
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
 # Most places will/should use BASE_PATH to make the urls
