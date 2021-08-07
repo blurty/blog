@@ -52,6 +52,21 @@
       </ul>
     </div>
     
-    {% include JB/comments %}
+    <!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'cc954ce7ae8d08749a83',
+        clientSecret: '7971b94322d0824fc9f0ae767af8ff594c1a6fbf',
+        repo: 'blog-comments',
+        owner: 'blurty',
+        admin: ['blurty'],
+        id:decodeURI(window.location.pathname),
+
+    });
+    gitalk.render('gitalk-container');
+</script> 
+<!-- Gitalk end -->
   </div>
 </div>
