@@ -63,7 +63,7 @@
         repo: 'blog-comments',
         owner: 'blurty',
         admin: ['blurty'],
-        id: "{{ page.url | truncate: 50, '' }}",
+        id:decodeURI(window.location.pathname),
 
     });
     gitalk.render('gitalk-container');
