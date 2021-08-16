@@ -18,7 +18,7 @@ author :
   twitter : None
   feedburner : None
 
-paginate: 5
+paginate: 10
 paginate_path: "page:num"
 
 gittalk:
